@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrawSearch - Buscador de Fresas</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; background-color: #ffe6f2; }
+        h1 { color: #e60073; font-size: 48px; text-shadow: 2px 2px 5px #ff4d94; }
+        input, button { padding: 15px; font-size: 18px; margin: 10px; border-radius: 20px; border: none; }
+        input { width: 70%; background-color: #fff0f5; }
+        button { background-color: #ff4d94; color: white; cursor: pointer; }
+        button:hover { background-color: #e60073; }
+        .search-container { padding: 20px; background: white; border-radius: 15px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .strawberry-bg { position: absolute; top: 10px; left: 10px; width: 50px; height: 50px; }
+        .login-container { margin-top: 30px; }
+        .login-container input { width: 60%; margin: 10px 0; }
+        .login-container button { width: 70%; }
+        .webs-clasicas, .personalizadas { margin-top: 20px; padding: 15px; background: white; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; width: 60%; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { text-decoration: none; color: #0073e6; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+    <script>
+        function buscar() {
+            var query = document.getElementById("busqueda").value;
+            if (query) {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+            }
+        }
+
+        function iniciarSesion() {
+            var correo = document.getElementById("correo").value.trim();
+            if (correo.endsWith("@strawberry.com")) {
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("welcomeMessage").style.display = "block";
+            } else {
+                alert("Por favor ingresa un correo válido @strawberry.com.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/PerfectStrawberry.jpg" alt="Fresa" class="strawberry-bg">
+    <h1>🍓 StrawSearch 🍓</h1>
+
+    <div id="loginForm" class="login-container">
+        <h2>Inicia sesión con tu cuenta de StrawBerry</h2>
+        <input type="email" id="correo" placeholder="Ingresa tu correo @strawberry.com">
+        <button onclick="iniciarSesion()">Iniciar sesión</button>
+    </div>
+
+    <div id="welcomeMessage" style="display:none;">
+        <h2>Bienvenido a StrawSearch</h2>
+        <div class="search-container">
+            <input type="text" id="busqueda" placeholder="Busca lo que quieras...">
+            <button onclick="buscar()">🔍 Buscar</button>
+        </div>
+        <div class="webs-clasicas">
+            <h2>🌍 Webs Clásicas</h2>
+            <ul>
+                <li><a href="https://www.google.com/" target="_blank">Google</a></li>
+                <li><a href="https://www.youtube.com/" target="_blank">YouTube</a></li>
+                <li><a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a></li>
+                <li><a href="https://www.openai.com/" target="_blank">OpenAI</a></li>
+            </ul>
+        </div>
+
+        <div class="personalizadas">
+            <h2>🔗 Enlaces Personalizados</h2>
+            <input type="text" id="nombreEnlace" placeholder="Nombre del enlace">
+            <input type="text" id="urlEnlace" placeholder="URL del enlace">
+            <button onclick="agregarEnlace()">Agregar</button>
+            <ul id="listaPersonalizada"></ul>
+        </div>
+    </div>
+</body>
+</html>
