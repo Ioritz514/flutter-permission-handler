@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StrawSearch</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #00eaff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    form {
+      width: 90%;
+      max-width: 600px;
+      display: flex;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      border-radius: 10px 0 0 10px;
+    }
+
+    button {
+      padding: 15px 20px;
+      font-size: 18px;
+      background: #00eaff;
+      color: black;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #00c2cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>StrawSearch</h1>
+  <form id="searchForm" action="https://www.google.com/search" method="GET" target="_blank">
+    <input type="text" name="q" placeholder="Buscar en la web...">
+    <button type="submit">Buscar</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('searchForm');
+    form.addEventListener('submit', function(e) {
+      const input = form.querySelector('input');
+      if (input.value.trim() === '') {
+        e.preventDefault();
+        alert('Por favor escribe algo para buscar.');
+      }
+    });
+  </script>
+</body>
+</html>
